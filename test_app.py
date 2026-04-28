@@ -1,2 +1,2 @@
 def test_sample():
-    assert 1 == 1   # force failure
+    assert 1 == 2   # force failure
