@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'echo "Building..."'
+                sh 'echo "🔨 Building..."'
                 sh 'python3 --version'
             }
         }
@@ -29,15 +29,14 @@ pipeline {
     }
 
     post {
-        failure {
-            emailext (
-                subject: "❌ Build Failed: ${env.JOB_NAME}",
-                body: "Something went wrong in pipeline.",
-                to: "your-email@gmail.com"
-            )
-        }
         success {
-            echo 'Build Passed ✅'
+            echo '✅ Build SUCCESS'
+        }
+        failure {
+            echo '❌ Build FAILED'
+        }
+        always {
+            echo '📌 Pipeline Finished'
         }
     }
 }
